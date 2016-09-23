@@ -73,6 +73,13 @@ if [ "$1" == 'ddclient' ]; then
       chown -R "${MYUSER}":"${MYUSER}" /var/run/ddclient
       chmod 0750 /var/run/ddclient
     fi
+    if [ ! -d /etc/ddclient ]; then
+      mkdir /etc/ddclient
+    fi
+    if [ -d /etc/ddclient ]; then
+      chown -R "${MYUSER}":"${MYUSER}" /etc/ddclient
+      chmod 0750 /etc/ddclient
+    fi
     exec /sbin/su-exec "${MYUSER}" ddclient -foreground -daemon 300 -syslog -pid /var/run/ddclient/ddclient.pid
 fi
 
