@@ -23,7 +23,7 @@ RUN apk upgrade --no-cache && \
       ssmtp \
       mailx \
       perl && \
-    mkdir -p /root/.cpan/CPAN
+    mkdir -p /root/.cpan/CPAN && \
     cat <<EOF > /root/.cpan/CPAN/MyConfig.pm
 $CPAN::Config = {
   'applypatch' => q[],
