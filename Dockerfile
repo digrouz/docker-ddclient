@@ -33,7 +33,7 @@ RUN apk upgrade --no-cache && \
     apk del --no-cache --purge \
       build-deps  && \
     rm -rf /opt/ddclient/.git \
-           /usr/local/bin/cpanm
+           /usr/local/bin/cpanm \
            /root/.cpan \
            /tmp/* \
            /var/cache/apk/*  \
