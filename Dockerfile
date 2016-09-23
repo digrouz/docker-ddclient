@@ -19,6 +19,7 @@ RUN apk upgrade --no-cache && \
       wget \
       expat-dev && \
     apk add --no-cache --virtual=run-deps \
+      ca-certificates \
       su-exec \
       openssl \
       ssmtp \
