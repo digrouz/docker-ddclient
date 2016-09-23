@@ -80,7 +80,7 @@ if [ "$1" == 'ddclient' ]; then
       chown -R "${MYUSER}":"${MYUSER}" /etc/ddclient
       chmod 0750 /etc/ddclient
     fi
-    exec /sbin/su-exec "${MYUSER}" ddclient -foreground -daemon 300 -syslog -pid /var/run/ddclient/ddclient.pid
+    exec /sbin/su-exec "${MYUSER}" /opt/ddclient/ddclient -foreground -daemon 300 -syslog -pid /var/run/ddclient/ddclient.pid
 fi
 
 exec "$@"
