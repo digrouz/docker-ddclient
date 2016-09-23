@@ -95,7 +95,7 @@ $CPAN::Config = { \
 1;\
 __END__\
     EOF && \
-    cpan  IO::Socket::SSL JSON::Any  IO::Socket:INET6 Data::Validate::IP && 
+    cpan  IO::Socket::SSL JSON::Any  IO::Socket:INET6 Data::Validate::IP && \
     git clone --depth 1 https://github.com/wimpunk/ddclient /opt/ddclient && \
     apk del --no-cache --purge \
       build-deps  && \
