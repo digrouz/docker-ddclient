@@ -12,7 +12,7 @@ https://sourceforge.net/p/ddclient/wiki/Home/
 ## Usage
     docker create --name=ddclient \
       -v <path to ddclient.conf>:/etc/ddclient/ddclient.conf \
-      -v /etc/localtime:/etc/localtime:ro digrouz/docker-alp-ddclient
+      -v /etc/localtime:/etc/localtime:ro \
       -e DOCKUID=<UID default:10007> \
       -e DOCKGID=<GID default:10007> \
       -e DOCKMAIL=<mail address> \
