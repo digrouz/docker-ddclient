@@ -15,14 +15,14 @@ RUN apk upgrade --no-cache && \
       g++ \
       perl-dev \
       libxml2-dev \
-      openssl-dev \
+      libressl-dev \
       wget \
       git \
       expat-dev && \
     apk add --no-cache --virtual=run-deps \
       ca-certificates \
       su-exec \
-      openssl \
+      libressl \
       ssmtp \
       mailx \
       perl && \
