@@ -1,8 +1,8 @@
 #!/bin/sh
 
-local MYUSER="ddclient"
-local MYGID="10007"
-local MYUID="10007"
+MYUSER="ddclient"
+MYGID="10007"
+MYUID="10007"
 
 ConfigureSsmtp () {
   # Customizing sstmp
