@@ -43,3 +43,7 @@ This variable is not mandatory and specifies the mail that has to be used to sen
 ### `DOCKMAILDOMAIN`
 
 This variable is not mandatory and specifies the address where the mail appears to come from for user authentication. Do not specify any if mail notifications are not required.
+
+## Notes
+
+* The docker entrypoint will upgrade operating system at each startup.
