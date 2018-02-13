@@ -17,14 +17,17 @@ RUN apk upgrade --no-cache && \
       libressl-dev \
       wget \
       git \
-      expat-dev && \
+      expat-dev 
+    && \
     apk add --no-cache --virtual=run-deps \
       ca-certificates \
       su-exec \
       libressl \
       ssmtp \
       mailx \
-      perl && \
+      bash \
+      perl 
+    && \
     wget https://cpanmin.us/ -O /usr/local/bin/cpanm && \
     chmod +x /usr/local/bin/cpanm && \
     /usr/local/bin/cpanm  IO::Socket::SSL JSON::Any IO::Socket::INET6 Data::Validate::IP && \
@@ -43,7 +46,7 @@ RUN apk upgrade --no-cache && \
 ### Expose ports
 
 ### Running User: not used, managed by docker-entrypoint.sh
-#USER ddclient
+USER root
 
 ### Start ddclient
 COPY ./docker-entrypoint.sh /
