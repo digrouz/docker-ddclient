@@ -1,7 +1,16 @@
 # docker-alp-ddclient
-Install ddclient into an Alpine Linux container
+Install ddclient into a Linux container
 
 ![ddclient](https://rnxtras.com/wp-content/uploads/edd/2014/02/dyndns-logo.png)
+
+
+## Tags
+
+Several tags are available:
+* latest: see alpine3.7
+* centos7: [centos7/Dokerfile](https://github.com/digrouz/docker-alp-ddclient/blob/centos7/Dockerfile)
+* alpine3.7: [alpine3.6/Dockerfile](https://github.com/digrouz/docker-alp-ddclient/blob/alpine3.7/Dockerfile)
+
 
 ## Description
 
@@ -15,6 +24,7 @@ https://sourceforge.net/p/ddclient/wiki/Home/
       -v /etc/localtime:/etc/localtime:ro \
       -e DOCKUID=<UID default:10007> \
       -e DOCKGID=<GID default:10007> \
+      -e DOCKUPGRADE=<0|1 default:0> \
       -e DOCKMAIL=<mail address> \
       -e DOCKRELAY=<smtp relay> \
       -e DOCKMAILDOMAIN=<originating mail domain> \
@@ -32,6 +42,10 @@ This variable is not mandatory and specifies the user id that will be set to run
 
 This variable is not mandatory and specifies the group id that will be set to run the application. It has default value `10007`.
 
+### `DOCKUPGRADE`
+
+This variable is not mandatory and specifies if the container has to launch software update at startup or not. Valid values are `0` and `1`. It has default value `0`.
+
 ### `DOCKRELAY`
 
 This variable is not mandatory and specifies the smtp relay that will be used to send email. Do not specify any if mail notifications are not required.
@@ -43,6 +57,14 @@ This variable is not mandatory and specifies the mail that has to be used to sen
 ### `DOCKMAILDOMAIN`
 
 This variable is not mandatory and specifies the address where the mail appears to come from for user authentication. Do not specify any if mail notifications are not required.
+
+## Notes
+
+* The docker entrypoint can upgrade operating system at each startup. To enable this feature, just add `-e DOCKUPGRADE=1` at container creation.
+
+## Issues
+
+If you encounter an issue please open a ticket at [github](https://github.com/digrouz/docker-alp-ddclient/issues)
 
 ## Notes
 
