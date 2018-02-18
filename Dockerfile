@@ -17,7 +17,7 @@ RUN apk upgrade --no-cache && \
       libressl-dev \
       wget \
       git \
-      expat-dev 
+      expat-dev \
     && \
     apk add --no-cache --virtual=run-deps \
       ca-certificates \
@@ -26,7 +26,7 @@ RUN apk upgrade --no-cache && \
       ssmtp \
       mailx \
       bash \
-      perl 
+      perl \
     && \
     wget https://cpanmin.us/ -O /usr/local/bin/cpanm && \
     chmod +x /usr/local/bin/cpanm && \
