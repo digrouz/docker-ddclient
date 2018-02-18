@@ -67,6 +67,3 @@ This variable is not mandatory and specifies the address where the mail appears 
 
 If you encounter an issue please open a ticket at [github](https://github.com/digrouz/docker-alp-ddclient/issues)
 
-## Notes
-
-* The docker entrypoint will upgrade operating system at each startup.
