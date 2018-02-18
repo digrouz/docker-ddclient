@@ -9,7 +9,8 @@ Install ddclient into a Linux container
 Several tags are available:
 * latest: see alpine3.7
 * centos7: [centos7/Dokerfile](https://github.com/digrouz/docker-alp-ddclient/blob/centos7/Dockerfile)
-* alpine3.7: [alpine3.6/Dockerfile](https://github.com/digrouz/docker-alp-ddclient/blob/alpine3.7/Dockerfile)
+* alpine3.6: [alpine3.6/Dockerfile](https://github.com/digrouz/docker-alp-ddclient/blob/alpine3.6/Dockerfile)
+* alpine3.7: [alpine3.7/Dockerfile](https://github.com/digrouz/docker-alp-ddclient/blob/alpine3.7/Dockerfile)
 
 
 ## Description
