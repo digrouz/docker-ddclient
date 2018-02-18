@@ -1,5 +1,5 @@
-FROM alpine:latest
-LABEL maintainer "DI GREGORIO Nicolas <nicolas.digregorio@gmail.com>"
+FROM alpine:3.7
+LABEL maintainer "DI GREGORIO Nicolas <ndigregorio@ndg-consulting.tech>"
 
 ### Environment variables
 ENV LANG='en_US.UTF-8' \
