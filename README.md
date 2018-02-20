@@ -1,4 +1,4 @@
-# docker-alp-ddclient
+# docker-ddclient
 Install ddclient into a Linux container
 
 ![ddclient](https://rnxtras.com/wp-content/uploads/edd/2014/02/dyndns-logo.png)
@@ -7,10 +7,10 @@ Install ddclient into a Linux container
 ## Tags
 
 Several tags are available:
-* latest: see alpine3.7
-* centos7: [centos7/Dokerfile](https://github.com/digrouz/docker-alp-ddclient/blob/centos7/Dockerfile)
-* alpine3.6: [alpine3.6/Dockerfile](https://github.com/digrouz/docker-alp-ddclient/blob/alpine3.6/Dockerfile)
-* alpine3.7: [alpine3.7/Dockerfile](https://github.com/digrouz/docker-alp-ddclient/blob/alpine3.7/Dockerfile)
+* latest: see centos7
+* centos7: [centos7/Dokerfile](https://github.com/digrouz/docker-ddclient/blob/centos7/Dockerfile)
+* alpine3.6: [alpine3.6/Dockerfile](https://github.com/digrouz/docker-ddclient/blob/alpine3.6/Dockerfile)
+* alpine3.7: [alpine3.7/Dockerfile](https://github.com/digrouz/docker-ddclient/blob/alpine3.7/Dockerfile)
 
 
 ## Description
@@ -29,7 +29,7 @@ https://sourceforge.net/p/ddclient/wiki/Home/
       -e DOCKMAIL=<mail address> \
       -e DOCKRELAY=<smtp relay> \
       -e DOCKMAILDOMAIN=<originating mail domain> \
-      digrouz/docker-alp-ddclient
+      digrouz/ddclient
       
 ## Environment Variables
 
@@ -65,5 +65,5 @@ This variable is not mandatory and specifies the address where the mail appears 
 
 ## Issues
 
-If you encounter an issue please open a ticket at [github](https://github.com/digrouz/docker-alp-ddclient/issues)
+If you encounter an issue please open a ticket at [github](https://github.com/digrouz/docker-ddclient/issues)
 
