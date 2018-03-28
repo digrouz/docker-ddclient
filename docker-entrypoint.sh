@@ -189,6 +189,15 @@ if [ "${1}" == 'ddclient' ]; then
       chown -R "${MYUSER}":"${MYUSER}" /var/run/ddclient
       chmod 0750 /var/run/ddclient
     fi
+    if [ ! -d /var/cache/ddclient ]; then
+      DockLog "Creating /var/cache/ddclient"
+      mkdir /var/cache/ddclient
+    fi
+    if [ -d /var/cache/ddclient ]; then
+      DockLog "Fixing permissions on /var/cache/ddclient"
+      chown -R "${MYUSER}":"${MYUSER}" /var/cache/ddclient
+      chmod 0750 /var/cache/ddclient
+    fi
     if [ ! -d /etc/ddclient ]; then
       DockLog "Creating /etc/ddclient"
       mkdir /etc/ddclient
