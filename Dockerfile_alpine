@@ -67,6 +67,5 @@ RUN set -x && \
 USER root
 
 ### Start ddclient
-COPY ./docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["ddclient"]
