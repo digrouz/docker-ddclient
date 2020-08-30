@@ -1,13 +1,16 @@
 FROM centos:7
 LABEL maintainer "DI GREGORIO Nicolas <nicolas.digregorio@gmail.com>"
 
+ARG DDCLIENT_VERSION='3.9.1'
+
 ### Environment variables
 ENV LANG='en_US.UTF-8' \
     LANGUAGE='en_US.UTF-8' \
     TERM='xterm' \
     APPUSER='ddclient' \
     APPUID='10007' \
-    APPGID='10007'
+    APPGID='10007' \
+    DDCLIENT_VERSION="${DDCLIENT_VERSION}"
 
 # Copy config files
 COPY root/ /
@@ -24,9 +27,9 @@ RUN set -x && \
     yum install -y epel-release && \
     yum update -y && \
     yum install -y \
-      ca-certificates \ 
-      openssl \ 
-      ssmtp \ 
+      ca-certificates \
+      openssl \
+      ssmtp \
       mailx \
       perl \
       perl-IO-Socket-SSL \
@@ -43,14 +46,17 @@ RUN set -x && \
       perl-devel \
       libxml2-devel \
       openssl-devel \
+      curl \
       wget \
       git \
       expat-devel \
     && \
-    wget https://cpanmin.us/ -O /usr/local/bin/cpanm && \
+    curl -SsL https://cpanmin.us/ -o /usr/local/bin/cpanm && \
     chmod +x /usr/local/bin/cpanm && \
     cpanm Data::Validate::IP && \
-    git clone --depth 1 https://github.com/ddclient/ddclient /opt/ddclient && \
+    curl -SsL https://github.com/ddclient/ddclient/archive/v${DDCLIENT_VERSION}.tar.gz -o /tmp/ddclient.tar.gz && \
+    tar xzf /tmp/ddclient.tar.gz -C /opt && \
+    mv /opt/ddclient-${DDCLIENT_VERSION} /opt/ddclient && \
     yum history -y undo last && \
     mkdir /docker-entrypoint.d && \
     chmod +x /usr/local/bin/docker-entrypoint.sh && \

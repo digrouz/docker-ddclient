@@ -1,13 +1,16 @@
 FROM alpine:3.12
 LABEL maintainer "DI GREGORIO Nicolas <nicolas.digregorio@gmail.com>"
 
+ARG DDCLIENT_VERSION='3.9.1'
+
 ### Environment variables
 ENV LANG='en_US.UTF-8' \
     LANGUAGE='en_US.UTF-8' \
     TERM='xterm' \
     APPUSER='ddclient' \
     APPUID='10007' \
-    APPGID='10007'
+    APPGID='10007' \
+    DDCLIENT_VERSION="${DDCLIENT_VERSION}"
 
 # Copy config files
 COPY root/ /
@@ -29,6 +32,7 @@ RUN set -x && \
       perl-dev \
       libxml2-dev \
       libressl-dev \
+      curl \
       wget \
       git \
       expat-dev \
@@ -44,20 +48,12 @@ RUN set -x && \
       perl-io-socket-ssl \
       perl-io-socket-inet6 \
     && \
-    wget https://cpanmin.us/ -O /usr/local/bin/cpanm && \
+    curl -SsL https://cpanmin.us/ -o /usr/local/bin/cpanm && \
     chmod +x /usr/local/bin/cpanm && \
     cpanm Data::Validate::IP && \
-    git clone --depth 1 https://github.com/ddclient/ddclient /tmp/ddclient && \
-    cd /tmp/ddclient && \
-    ./autogen && \
-    ./configure \
-      --prefix=/usr \
-      --sysconfdir=/etc/ddclient \
-      --localstatedir=/var \
-    && \
-    make && \
-    make VERBOSE=1 check && \
-    make install && \
+    curl -SsL https://github.com/ddclient/ddclient/archive/v${DDCLIENT_VERSION}.tar.gz -o /tmp/ddclient.tar.gz && \
+    tar xzf /tmp/ddclient.tar.gz -C /opt && \
+    mv /opt/ddclient-${DDCLIENT_VERSION} /opt/ddclient && \
     mkdir /docker-entrypoint.d && \
     chmod +x /usr/local/bin/docker-entrypoint.sh && \
     ln -snf /usr/local/bin/docker-entrypoint.sh /docker-entrypoint.sh && \
