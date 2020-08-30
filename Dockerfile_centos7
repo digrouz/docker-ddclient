@@ -50,7 +50,7 @@ RUN set -x && \
     wget https://cpanmin.us/ -O /usr/local/bin/cpanm && \
     chmod +x /usr/local/bin/cpanm && \
     cpanm Data::Validate::IP && \
-    git clone --depth 1 https://github.com/wimpunk/ddclient /opt/ddclient && \
+    git clone --depth 1 https://github.com/ddclient/ddclient /opt/ddclient && \
     yum history -y undo last && \
     mkdir /docker-entrypoint.d && \
     chmod +x /usr/local/bin/docker-entrypoint.sh && \
