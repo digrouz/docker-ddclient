@@ -22,6 +22,7 @@ RUN set -x && \
     ConfigureUser && \
     apk upgrade --no-cache && \
     apk add --no-cache --virtual=build-deps \
+      autoconf \
       make \
       gcc \
       g++ \
@@ -46,7 +47,17 @@ RUN set -x && \
     wget https://cpanmin.us/ -O /usr/local/bin/cpanm && \
     chmod +x /usr/local/bin/cpanm && \
     cpanm Data::Validate::IP && \
-    git clone --depth 1 https://github.com/ddclient/ddclient /opt/ddclient && \
+    git clone --depth 1 https://github.com/ddclient/ddclient /tmp/ddclient && \
+    cd /tmp/ddclient && \
+    ./autogen && \
+    ./configure \
+      --prefix=/usr \
+      --sysconfdir=/etc/ddclient \
+      --localstatedir=/var \
+    && \
+    make && \
+    make VERBOSE=1 check && \
+    make install && \
     mkdir /docker-entrypoint.d && \
     chmod +x /usr/local/bin/docker-entrypoint.sh && \
     ln -snf /usr/local/bin/docker-entrypoint.sh /docker-entrypoint.sh && \
