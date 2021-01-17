@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM alpine:3.13
 LABEL maintainer "DI GREGORIO Nicolas <nicolas.digregorio@gmail.com>"
 
 ARG DDCLIENT_VERSION='3.9.1'
@@ -31,7 +31,7 @@ RUN set -x && \
       g++ \
       perl-dev \
       libxml2-dev \
-      libressl-dev \
+      openssl-dev \
       curl \
       wget \
       git \
@@ -40,7 +40,7 @@ RUN set -x && \
     apk add --no-cache --virtual=run-deps \
       ca-certificates \
       su-exec \
-      libressl \
+      openssl \
       ssmtp \
       mailx \
       bash \
