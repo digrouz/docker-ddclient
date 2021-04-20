@@ -2,7 +2,8 @@
 
 DDCLIENT_URL="https://api.github.com/repos/ddclient/ddclient/tags"
 
-LAST_VERSION=$(curl -SsL ${DDCLIENT_URL} | jq .[24].name -r )
+FULL_LAST_VERSION=$(curl -SsL ${DDCLIENT_URL} | jq .[0].name -r )
+LAST_VERSION="${FULL_LAST_VERSION:1}"
 
 sed -i -e "s|DDCLIENT_VERSION='.*'|DDCLIENT_VERSION='${LAST_VERSION}'|" Dockerfile*
 
