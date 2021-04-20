@@ -1,3 +1,7 @@
+[![auto-update-workflow](https://github.com/digrouz/docker-ddclient/actions/workflows/auto-update.yml/badge.svg)](https://github.com/digrouz/docker-ddclient/actions/workflows/auto-update.yml)
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/digrouz/ddclient)
+![Docker Pulls](https://img.shields.io/docker/pulls/digrouz/ddclient)
+
 # docker-ddclient
 Install ddclient into a Linux container
 
