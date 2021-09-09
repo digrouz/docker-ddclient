@@ -1,7 +1,22 @@
+ARG DDCLIENT_VERSION='3.9.1'
+
+FROM centos:7 AS su-exec-builder
+
+RUN set -x && \
+    yum update -y && \
+    yum install -y \
+      gcc \
+      make \
+      git \
+    && \
+    git clone --depth 1 https://github.com/ncopa/su-exec.git /opt/su-exec && \
+    cd /opt/su-exec && \
+    make
+
 FROM centos:7
 LABEL maintainer "DI GREGORIO Nicolas <nicolas.digregorio@gmail.com>"
 
-ARG DDCLIENT_VERSION='3.9.1'
+ARG DDCLIENT_VERSION
 
 ### Environment variables
 ENV LANG='en_US.UTF-8' \
@@ -23,7 +38,6 @@ RUN set -x && \
     MYUID=${APPUID} && \
     MYGID=${APPGID} && \
     ConfigureUser && \
-    yum-config-manager --add-repo /tmp/custom.repo && \
     yum install -y epel-release && \
     yum update -y && \
     yum install -y \
@@ -38,7 +52,6 @@ RUN set -x && \
       perl-Data-Dumper \
       perl-Test-Simple \
       perl-Test-Requires \
-      su-exec \
     && \
     yum install -y \
       make \
