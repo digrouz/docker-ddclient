@@ -28,6 +28,7 @@ ENV LANG='en_US.UTF-8' \
     DDCLIENT_VERSION="${DDCLIENT_VERSION}"
 
 # Copy config files
+COPY --from=su-exec-builder /opt/su-exec/su-exec /usr/local/bin/su-exec
 COPY root/ /
 
 ### Install Application
