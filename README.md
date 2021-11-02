@@ -7,7 +7,6 @@ Install ddclient into a Linux container
 
 ![ddclient](https://rnxtras.com/wp-content/uploads/edd/2014/02/dyndns-logo.png)
 
-
 ## Tags
 
 Several tags are available:
