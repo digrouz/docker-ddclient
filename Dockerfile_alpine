@@ -1,4 +1,4 @@
-FROM alpine:3.15.2
+FROM alpine:3.15.3
 LABEL maintainer "DI GREGORIO Nicolas <nicolas.digregorio@gmail.com>"
 
 ARG DDCLIENT_VERSION='3.9.1'
