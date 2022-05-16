@@ -1,4 +1,4 @@
-ARG DDCLIENT_VERSION='3.9.1'
+ARG DDCLIENT_VERSION='3.10.0_2'
 
 FROM centos:7 AS su-exec-builder
 
