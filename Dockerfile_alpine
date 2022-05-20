@@ -47,19 +47,26 @@ RUN set -x && \
       perl \
       perl-io-socket-ssl \
       perl-io-socket-inet6 \
+      perl-json \
+      perl-uri \
     && \
     curl -SsL https://cpanmin.us/ -o /usr/local/bin/cpanm && \
     chmod +x /usr/local/bin/cpanm && \
     cpanm Data::Validate::IP && \
     curl -SsL https://github.com/ddclient/ddclient/archive/v${DDCLIENT_VERSION}.tar.gz -o /tmp/ddclient.tar.gz && \
     tar xzf /tmp/ddclient.tar.gz -C /opt && \
-    mv /opt/ddclient-${DDCLIENT_VERSION} /opt/ddclient && \
+    cd /opt/ddclient-${DDCLIENT_VERSION} && \
+    ./autogen && \
+    ./configure && \
+    make && \
+    mkdir /opt/ddclient && \
+    mv /opt/ddclient-${DDCLIENT_VERSION}/ddclient /opt/ddclient/ddclient  && \
     mkdir /docker-entrypoint.d && \
     chmod +x /usr/local/bin/docker-entrypoint.sh && \
     ln -snf /usr/local/bin/docker-entrypoint.sh /docker-entrypoint.sh && \
     apk del --no-cache --purge \
       build-deps  && \
-    rm -rf /opt/ddclient/.git \
+    rm -rf /opt/ddclient-${DDCLIENT_VERSION}/.git \
            /usr/local/bin/cpanm \
            /root/.cpan \
            /tmp/* \
