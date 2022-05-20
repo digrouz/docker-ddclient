@@ -49,12 +49,15 @@ RUN set -x && \
       perl \
       perl-IO-Socket-SSL \
       perl-IO-Socket-INET6 \
+      perl-JSON-PP \
       perl-NetAddr-IP \
       perl-Data-Dumper \
       perl-Test-Simple \
       perl-Test-Requires \
+      perl-URI \
     && \
     yum install -y \
+      autoconf \
       automake \
       make \
       gcc \
@@ -71,13 +74,22 @@ RUN set -x && \
     cpanm Data::Validate::IP && \
     curl -SsL https://github.com/ddclient/ddclient/archive/v${DDCLIENT_VERSION}.tar.gz -o /tmp/ddclient.tar.gz && \
     tar xzf /tmp/ddclient.tar.gz -C /opt && \
-    mv /opt/ddclient-${DDCLIENT_VERSION} /opt/ddclient && \
+    cd /opt/ddclient-${DDCLIENT_VERSION} && \
+    ./autogen && \
+    ./configure \
+      --bindir=/opt/ddclient \
+      --sysconfdir=/etc/ddclient \
+      --runstatedir=/var/run/ddclient  \
+      --localstatedir=/var/cache/ddclient \
+    && \
+    make && \
+    make install && \
     yum history -y undo last && \
     mkdir /docker-entrypoint.d && \
     chmod +x /usr/local/bin/docker-entrypoint.sh && \
     ln -snf /usr/local/bin/docker-entrypoint.sh /docker-entrypoint.sh && \
     yum clean all && \
-    rm -rf /opt/ddclient/.git \
+    rm -rf /opt/ddclient-${DDCLIENT_VERSION} \
            /usr/local/bin/cpanm \
            /root/.cpan \
            /tmp/* \
