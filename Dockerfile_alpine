@@ -26,6 +26,7 @@ RUN set -x && \
     apk upgrade --no-cache && \
     apk add --no-cache --virtual=build-deps \
       autoconf \
+      automake \
       make \
       gcc \
       g++ \
