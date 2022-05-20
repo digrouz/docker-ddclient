@@ -46,9 +46,13 @@ RUN set -x && \
       mailx \
       bash \
       perl \
+      perl-http-daemon \
       perl-io-socket-ssl \
       perl-io-socket-inet6 \
       perl-json \
+      perl-test-mockmodule \
+      perl-test-tcp \
+      perl-test-warnings \
       perl-uri \
     && \
     curl -SsL https://cpanmin.us/ -o /usr/local/bin/cpanm && \
