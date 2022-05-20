@@ -58,16 +58,20 @@ RUN set -x && \
     tar xzf /tmp/ddclient.tar.gz -C /opt && \
     cd /opt/ddclient-${DDCLIENT_VERSION} && \
     ./autogen && \
-    ./configure && \
+    ./configure \
+      --bindir=/opt/ddclient \
+      --sysconfdir=/etc/ddclient \
+      --runstatedir=/var/run/ddclient  \
+      -localstatedir=/var/cache/ddclient \
+    && \
     make && \
-    mkdir /opt/ddclient && \
-    mv /opt/ddclient-${DDCLIENT_VERSION}/ddclient /opt/ddclient/ddclient  && \
+    make install && \
     mkdir /docker-entrypoint.d && \
     chmod +x /usr/local/bin/docker-entrypoint.sh && \
     ln -snf /usr/local/bin/docker-entrypoint.sh /docker-entrypoint.sh && \
     apk del --no-cache --purge \
       build-deps  && \
-    rm -rf /opt/ddclient-${DDCLIENT_VERSION}/.git \
+    rm -rf /opt/ddclient-${DDCLIENT_VERSION} \
            /usr/local/bin/cpanm \
            /root/.cpan \
            /tmp/* \
