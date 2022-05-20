@@ -62,7 +62,7 @@ RUN set -x && \
       --bindir=/opt/ddclient \
       --sysconfdir=/etc/ddclient \
       --runstatedir=/var/run/ddclient  \
-      -localstatedir=/var/cache/ddclient \
+      --localstatedir=/var/cache/ddclient \
     && \
     make && \
     make install && \
