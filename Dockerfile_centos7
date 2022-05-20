@@ -55,6 +55,7 @@ RUN set -x && \
       perl-Test-Requires \
     && \
     yum install -y \
+      automake \
       make \
       gcc \
       perl-devel \
