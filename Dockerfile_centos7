@@ -52,9 +52,13 @@ RUN set -x && \
       perl-JSON-PP \
       perl-NetAddr-IP \
       perl-Data-Dumper \
+      perl-Test-MockModule \
       perl-Test-Simple \
       perl-Test-Requires \
+      perl-Test-TCP \
+      perl-Test-Warnings \
       perl-URI \
+      perl-version \
     && \
     yum install -y \
       autoconf \
