@@ -59,15 +59,15 @@ RUN set -x && \
     yum install -y \
       autoconf \
       automake \
-      make \
-      gcc \
-      perl-devel \
-      libxml2-devel \
-      openssl-devel \
       curl \
-      wget \
-      git \
       expat-devel \
+      gcc \
+      git \
+      libxml2-devel \
+      make \
+      openssl-devel \
+      perl-devel \
+      wget \
     && \
     curl -SsL https://cpanmin.us/ -o /usr/local/bin/cpanm && \
     chmod +x /usr/local/bin/cpanm && \
