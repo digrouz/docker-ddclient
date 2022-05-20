@@ -9,7 +9,6 @@ MYGID="${APPGID}"
 
 AutoUpgrade
 ConfigureUser
-ConfigureSsmtp
 
 if [ "${1}" == 'ddclient' ]; then
     if [ ! -d /var/run/ddclient ]; then
