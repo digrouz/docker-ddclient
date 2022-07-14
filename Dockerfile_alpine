@@ -1,7 +1,7 @@
 FROM alpine:3.16.0
 LABEL maintainer "DI GREGORIO Nicolas <nicolas.digregorio@gmail.com>"
 
-ARG DDCLIENT_VERSION=''
+ARG DDCLIENT_VERSION='3.10.0_2'
 
 ### Environment variables
 ENV LANG='en_US.UTF-8' \
