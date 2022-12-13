@@ -1,0 +1,19 @@
+#!/command/with-contenv sh
+
+if [ -f /etc/ssmtp/ssmtp.conf ];then
+# Configure relay
+  if [ -n "${DOCKRELAY}" ]; then
+    echo "ssmtp: Configuring smtp relay"
+    sed -i "s|mailhub=mail|mailhub=${DOCKRELAY}|i" /etc/ssmtp/ssmtp.conf
+  fi
+# Configure root
+  if [ -n "${DOCKMAIL}" ]; then
+    echo "ssmtp: Configuring root mail"
+    sed -i "s|root=postmaster|root=${DOCKMAIL}|i" /etc/ssmtp/ssmtp.conf
+  fi
+# Configure domain
+  if [ -n "${DOCKMAILDOMAIN}" ]; then
+    echo "ssmtp: Configuring rewriteDomain"
+    sed -i "s|#rewriteDomain=.*|rewriteDomain=${DOCKMAILDOMAIN}|i" /etc/ssmtp/ssmtp.conf
+  fi
+fi

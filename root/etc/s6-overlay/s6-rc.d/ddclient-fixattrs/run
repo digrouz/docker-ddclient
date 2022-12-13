@@ -1,0 +1,29 @@
+#!/command/with-contenv sh
+
+if [ ! -d /var/run/ddclient ]; then
+  echo "Creating /var/run/ddclient"
+  mkdir /var/run/ddclient
+fi
+if [ -d /var/run/ddclient ]; then
+  echo "Fixing permissions on /var/run/ddclient"
+  chown -R appuser:appuser /var/run/ddclient
+  chmod 0750 /var/run/ddclient
+fi
+if [ ! -d /var/cache/ddclient ]; then
+  echo "Creating /var/cache/ddclient"
+  mkdir /var/cache/ddclient
+fi
+if [ -d /var/cache/ddclient ]; then
+  echo "Fixing permissions on /var/cache/ddclient"
+  chown -R appuser:appuser /var/cache/ddclient
+  chmod 0750 /var/cache/ddclient
+fi
+if [ ! -d /etc/ddclient ]; then
+  echo "Creating /etc/ddclient"
+  mkdir /etc/ddclient
+fi
+if [ -d /etc/ddclient ]; then
+  echo "Fixing permissions on /etc/ddclient"
+  chown -R appuser:appuser /etc/ddclient
+  chmod 0750 /etc/ddclient
+fi
