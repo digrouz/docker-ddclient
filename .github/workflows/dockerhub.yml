@@ -41,11 +41,3 @@ jobs:
           file: Dockerfile_alpine
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/ddclient:alpine
-      -
-        name: Build and push tag centos7
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: Dockerfile_centos7
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ddclient:centos7

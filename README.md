@@ -12,7 +12,6 @@ Install ddclient into a Linux container
 
 Several tags are available:
 * latest: see alpine
-* centos7: [Dokerfile_centos7](https://github.com/digrouz/docker-ddclient/blob/master/Dockerfile_centos7)
 * alpine: [Dockerfile_alpine](https://github.com/digrouz/docker-ddclient/blob/master/Dockerfile_alpine)
 
 ## Description
@@ -24,10 +23,9 @@ https://sourceforge.net/p/ddclient/wiki/Home/
 ## Usage
     docker create --name=ddclient \
       -v <path to ddclient.conf>:/etc/ddclient/ddclient.conf \
-      -v /etc/localtime:/etc/localtime:ro \
-      -e DOCKUID=<UID default:10007> \
-      -e DOCKGID=<GID default:10007> \
-      -e DOCKUPGRADE=<0|1 default:0> \
+      -e UID=<UID default:12345> \
+      -e GID=<GID default:12345> \
+      -e AUTOUPGRADE=<0|1 default:0> \
       -e DOCKMAIL=<mail address> \
       -e DOCKRELAY=<smtp relay> \
       -e DOCKMAILDOMAIN=<originating mail domain> \
@@ -37,15 +35,15 @@ https://sourceforge.net/p/ddclient/wiki/Home/
 
 When you start the `ddclient` image, you can adjust the configuration of the `ddclient` instance by passing one or more environment variables on the `docker run` command line.
 
-### `DOCKUID`
+### `UID`
 
-This variable is not mandatory and specifies the user id that will be set to run the application. It has default value `10007`.
+This variable is not mandatory and specifies the user id that will be set to run the application. It has default value `12345`.
 
-### `DOCKGID`
+### `GID`
 
-This variable is not mandatory and specifies the group id that will be set to run the application. It has default value `10007`.
+This variable is not mandatory and specifies the group id that will be set to run the application. It has default value `12345`.
 
-### `DOCKUPGRADE`
+### `AUTOUPGRADE`
 
 This variable is not mandatory and specifies if the container has to launch software update at startup or not. Valid values are `0` and `1`. It has default value `0`.
 
@@ -63,7 +61,7 @@ This variable is not mandatory and specifies the address where the mail appears 
 
 ## Notes
 
-* The docker entrypoint can upgrade operating system at each startup. To enable this feature, just add `-e DOCKUPGRADE=1` at container creation.
+* The docker entrypoint can upgrade operating system at each startup. To enable this feature, just add `-e AUTOUPGRADE=1` at container creation.
 
 ## Issues
 

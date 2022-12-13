@@ -1,4 +1,4 @@
-FROM alpine:3.17.0
+FROM digrouz/alpine-s6:latest
 LABEL maintainer "DI GREGORIO Nicolas <nicolas.digregorio@gmail.com>"
 
 ARG DDCLIENT_VERSION='3.10.0_2'
@@ -7,9 +7,6 @@ ARG DDCLIENT_VERSION='3.10.0_2'
 ENV LANG='en_US.UTF-8' \
     LANGUAGE='en_US.UTF-8' \
     TERM='xterm' \
-    APPUSER='ddclient' \
-    APPUID='10007' \
-    APPGID='10007' \
     DDCLIENT_VERSION="${DDCLIENT_VERSION}"
 
 # Copy config files
@@ -17,12 +14,6 @@ COPY root/ /
 
 ### Install Application
 RUN set -x && \
-    chmod 1777 /tmp && \
-    . /usr/local/bin/docker-entrypoint-functions.sh && \
-    MYUSER=${APPUSER} && \
-    MYUID=${APPUID} && \
-    MYGID=${APPGID} && \
-    ConfigureUser && \
     apk upgrade --no-cache && \
     apk add --no-cache --virtual=build-deps \
       autoconf \
@@ -40,11 +31,9 @@ RUN set -x && \
     && \
     apk add --no-cache --virtual=run-deps \
       ca-certificates \
-      su-exec \
       openssl \
       ssmtp \
       mailx \
-      bash \
       perl \
       perl-http-daemon \
       perl-io-socket-ssl \
@@ -70,9 +59,6 @@ RUN set -x && \
     && \
     make && \
     make install && \
-    mkdir -p /docker-entrypoint.d && \
-    chmod +x /usr/local/bin/docker-entrypoint.sh && \
-    ln -snf /usr/local/bin/docker-entrypoint.sh /docker-entrypoint.sh && \
     apk del --no-cache --purge \
       build-deps  && \
     rm -rf /opt/ddclient-${DDCLIENT_VERSION} \
@@ -90,5 +76,4 @@ RUN set -x && \
 USER root
 
 ### Start ddclient
-ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["ddclient"]
+ENTRYPOINT ["/init"]
