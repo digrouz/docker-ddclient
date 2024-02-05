@@ -9,7 +9,7 @@ FULL_LAST_VERSION=$(curl -SsL ${DDCLIENT_URL} | \
 LAST_VERSION="${FULL_LAST_VERSION:1}"
 
 if [ "${LAST_VERSION}" ]; then
- . sed -i -e "s|DDCLIENT_VERSION='.*'|DDCLIENT_VERSION='${LAST_VERSION}'|" Dockerfile*
+  sed -i -e "s|DDCLIENT_VERSION='.*'|DDCLIENT_VERSION='${LAST_VERSION}'|" Dockerfile*
 fi
 
 if output=$(git status --porcelain) && [ -z "$output" ]; then
