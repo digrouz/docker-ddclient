@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  docker:
+  dockerHubImages:
     runs-on: ubuntu-latest
     steps:
       -
@@ -41,3 +41,15 @@ jobs:
           file: Dockerfile_alpine
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/ddclient:alpine
+  dockerHubDescription:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@main
+
+    - name: Docker Hub Description
+      uses: peter-evans/dockerhub-description@main
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        repository: ${{ secrets.DOCKERHUB_USERNAME }}/ddclient
+        short-description: ${{ github.event.repository.description }}

@@ -26,6 +26,7 @@ https://sourceforge.net/p/ddclient/wiki/Home/
       -e UID=<UID default:12345> \
       -e GID=<GID default:12345> \
       -e AUTOUPGRADE=<0|1 default:0> \
+      -e TZ=<timezone default:Europe/Brussels> \
       -e DOCKMAIL=<mail address> \
       -e DOCKRELAY=<smtp relay> \
       -e DOCKMAILDOMAIN=<originating mail domain> \
@@ -47,6 +48,10 @@ This variable is not mandatory and specifies the group id that will be set to ru
 
 This variable is not mandatory and specifies if the container has to launch software update at startup or not. Valid values are `0` and `1`. It has default value `0`.
 
+### `TZ`
+
+This variable is not mandatory and specifies the timezone to be configured within the container. It has default value `Europe/Brussels`.
+
 ### `DOCKRELAY`
 
 This variable is not mandatory and specifies the smtp relay that will be used to send email. Do not specify any if mail notifications are not required.
@@ -60,7 +65,7 @@ This variable is not mandatory and specifies the mail that has to be used to sen
 This variable is not mandatory and specifies the address where the mail appears to come from for user authentication. Do not specify any if mail notifications are not required.
 
 ## Notes
-
+* This container is built using [s6-overlay](https://github.com/just-containers/s6-overlay)
 * The docker entrypoint can upgrade operating system at each startup. To enable this feature, just add `-e AUTOUPGRADE=1` at container creation.
 
 ## Issues
