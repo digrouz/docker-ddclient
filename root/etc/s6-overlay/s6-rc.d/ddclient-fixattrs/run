@@ -7,7 +7,7 @@ fi
 if [ -d /var/run/ddclient ]; then
   echo "Fixing permissions on /var/run/ddclient"
   chown -R appuser:appuser /var/run/ddclient
-  chmod 0750 /var/run/ddclient
+  chmod 0700 /var/run/ddclient
 fi
 if [ ! -d /var/cache/ddclient ]; then
   echo "Creating /var/cache/ddclient"
@@ -16,7 +16,7 @@ fi
 if [ -d /var/cache/ddclient ]; then
   echo "Fixing permissions on /var/cache/ddclient"
   chown -R appuser:appuser /var/cache/ddclient
-  chmod 0750 /var/cache/ddclient
+  chmod 0700 /var/cache/ddclient
 fi
 if [ ! -d /etc/ddclient ]; then
   echo "Creating /etc/ddclient"
@@ -25,5 +25,5 @@ fi
 if [ -d /etc/ddclient ]; then
   echo "Fixing permissions on /etc/ddclient"
   chown -R appuser:appuser /etc/ddclient
-  chmod 0750 /etc/ddclient
+  chmod 0700 /etc/ddclient
 fi
