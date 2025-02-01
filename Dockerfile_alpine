@@ -54,7 +54,7 @@ RUN set -x && \
     ./autogen && \
     ./configure \
       --bindir=/opt/ddclient \
-      --sysconfdir=/etc/ddclient \
+      --sysconfdir=/etc \
       --runstatedir=/var/run/ddclient  \
       --localstatedir=/var \
     && \
