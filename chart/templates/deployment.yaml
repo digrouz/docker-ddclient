@@ -27,7 +27,7 @@ spec:
             - name: GID
               value: "{{ .Values.service.gid }}"
             - name: UID
-              value: "{{ .Values.service.uid }}
+              value: "{{ .Values.service.uid }}"
             - name: TZ
               value: "{{ .Values.service.tz }}"
             - name: AUTOUPGRADE
