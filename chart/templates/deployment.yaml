@@ -43,3 +43,4 @@ spec:
         - name: ddclient-conf
           secret:
             secretName: {{ include "ddclient.fullname" . }}-secret-config
+            defaultMode: 0640
