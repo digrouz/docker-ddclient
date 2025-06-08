@@ -44,4 +44,5 @@ spec:
           secret:
             secretName: {{ include "ddclient.fullname" . }}-secret-config
             defaultMode: 0640
+      securityContext:
             fsGroup: {{ .Values.service.gid }}
