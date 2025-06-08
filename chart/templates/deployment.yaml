@@ -23,7 +23,6 @@ spec:
           volumeMounts:
             - name: ddclient-conf
               mountPath: /etc/ddclient/ddclient.conf
-              
           env:
             - name: GID
               value: {{ .Values.service.gid }}

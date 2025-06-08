@@ -33,7 +33,7 @@ service:
   autoupgrade: false
   ## @param service.tz Time Zone
   ##
-  tz: false
+  tz: Europe/Brussels
 ## @section SMTP Configuration
 ##
 smtp:
