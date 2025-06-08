@@ -1,0 +1,45 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "ddclient.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/component: ddclient
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: ddclient
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: ddclient
+    spec:
+      containers:
+        - image: {{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}
+          name: ddclient
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - name: ddclient-conf
+              mountPath: /etc/ddclient/ddclient.conf
+              
+          env:
+            - name: GID
+              value: {{ .Values.service.gid }}
+            - name: UID
+              value: {{ .Values.service.uid }}
+            - name: TZ
+              value: {{ .Values.service.tz }}
+            - name: AUTOUPGRADE
+              value: {{ .Values.service.autoupgrade }}
+            - name: DOCKRELAY
+              value: {{ .Values.smtp.host }}
+            - name: DOCKMAIL
+              value: {{ .Values.smtp.from }}
+            - name: DOCKMAILDOMAIN
+              value: {{ .Values.smtp.domain }}
+      volumes:
+        - name: ddclient-conf
+          secret:
+            secretName: {{ include "ddclient.fullname" . }}-secret-config

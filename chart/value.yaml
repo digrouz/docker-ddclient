@@ -1,0 +1,50 @@
+## @section Kubernetes settings
+##
+image:
+  ## @param image.registry ddclient image registry
+  ##
+  registry: docker.io
+  ## @param image.repository ddclient image repository
+  ##
+  repository: digrouz/ddclient
+  ##
+  ## @param image.tag ddclient image tag
+  ## Ref: https://hub.docker.com/r/digrouz/ddclient/tags
+  ##
+  tag: "alpine"
+  ## @param image.pullPolicy ddclient image pull policy
+  ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+  ##
+  pullPolicy: Always
+## @param fullnameOverride String to override the application name.
+##
+fullnameOverride: ""
+## @section Service Configuration
+##
+service:
+  ## @param service.uid user id running ddclient
+  ##
+  uid: 12345
+  ## @param service.gid group id running ddclient
+  ##
+  gid: 12345
+  ## @param service.autoupgrade apply OS updates inside container at startup
+  ##
+  autoupgrade: false
+  ## @param service.tz Time Zone
+  ##
+  tz: false
+## @section SMTP Configuration
+##
+smtp:
+  ## @param smtp.host SMTP host
+  ##
+  host: ""
+  ## @param smtp.from SMTP sender email address
+  ## Example: foo.bar@domain.com
+  ##
+  from: ""
+  ## @param smtp.domain SMTP sender email address
+  ## Example: domain.com
+  ##
+  domain: ""
