@@ -17,27 +17,27 @@ spec:
         app.kubernetes.io/component: ddclient
     spec:
       containers:
-        - image: {{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}
-          name: ddclient
+        - name: ddclient
+          image: {{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
             - name: ddclient-conf
               mountPath: /etc/ddclient/ddclient.conf
           env:
             - name: GID
-              value: {{ .Values.service.gid }}
+              value: "{{ .Values.service.gid }}"
             - name: UID
-              value: {{ .Values.service.uid }}
+              value: "{{ .Values.service.uid }}
             - name: TZ
-              value: {{ .Values.service.tz }}
+              value: "{{ .Values.service.tz }}"
             - name: AUTOUPGRADE
-              value: {{ .Values.service.autoupgrade }}
+              value: "{{ .Values.service.autoupgrade }}"
             - name: DOCKRELAY
-              value: {{ .Values.smtp.host }}
+              value: "{{ .Values.smtp.host }}"
             - name: DOCKMAIL
-              value: {{ .Values.smtp.from }}
+              value: "{{ .Values.smtp.from }}"
             - name: DOCKMAILDOMAIN
-              value: {{ .Values.smtp.domain }}
+              value: "{{ .Values.smtp.domain }}"
       volumes:
         - name: ddclient-conf
           secret:
