@@ -22,8 +22,8 @@ if [ ! -d /etc/ddclient ]; then
   echo "Creating /etc/ddclient"
   mkdir /etc/ddclient
 fi
-if [ -d /etc/ddclient ]; then
-  echo "Fixing permissions on /etc/ddclient"
-  chown -R appuser:appuser /etc/ddclient
-  chmod 0700 /etc/ddclient
-fi
+#if [ -d /etc/ddclient ]; then
+#  echo "Fixing permissions on /etc/ddclient"
+#  chown -R appuser:appuser /etc/ddclient
+#  chmod 0700 /etc/ddclient
+#fi
