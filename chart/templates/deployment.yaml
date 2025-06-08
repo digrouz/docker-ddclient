@@ -22,7 +22,8 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
             - name: ddclient-conf
-              mountPath: /etc/ddclient/ddclient.conf
+              mountPath: /etc/ddclient
+              readOnly: true
           env:
             - name: GID
               value: "{{ .Values.service.gid }}"
