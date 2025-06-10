@@ -48,3 +48,17 @@ smtp:
   ## Example: domain.com
   ##
   domain: ""
+## @section ddclient Configuration
+##
+config:
+  ## @param config.ddclient.conf ddclient configuration
+  ## Example:
+  ## daemon=300
+  ## usev4=webv4,webv4=ipify-ipv4
+  ##
+  ddclientConf: |
+    # General config
+    daemon=300
+
+    # Router
+    usev4=webv4,webv4=ipify-ipv4
