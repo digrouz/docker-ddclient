@@ -30,7 +30,7 @@ service:
   gid: 12345
   ## @param service.autoupgrade apply OS updates inside container at startup
   ##
-  autoupgrade: false
+  autoupgrade: 0
   ## @param service.tz Time Zone
   ##
   tz: Europe/Brussels
