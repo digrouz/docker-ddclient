@@ -20,6 +20,7 @@ DDclient is a Perl client used to update dynamic DNS entries for accounts on Dyn
 https://sourceforge.net/p/ddclient/wiki/Home/
 
 ## Usage
+
     docker create --name=ddclient \
       -v <path to ddclient.conf>:/etc/ddclient/ddclient.conf \
       -e UID=<UID default:12345> \
@@ -66,6 +67,7 @@ This variable is not mandatory and specifies the address where the mail appears 
 ## Notes
 * This container is built using [s6-overlay](https://github.com/just-containers/s6-overlay)
 * The docker entrypoint can upgrade operating system at each startup. To enable this feature, just add `-e AUTOUPGRADE=1` at container creation.
+* An helm chart is available of in the [chart folder](https://github.com/digrouz/docker-ddclient/tree/master/chart) with an example [chart folder](https://github.com/digrouz/docker-ddclient/tree/master/chart/value.yaml)
 
 ## Issues
 
